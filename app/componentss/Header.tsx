@@ -3,8 +3,12 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
 import { Menu, X, Search, ShoppingCart } from 'lucide-react'
+import ShopCart from './ShopCart'
+import SearchInput from './SerachInput'
 
 const Header = () => {
+
+    const [searchQuery, setSearchQuery] = useState("")
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -20,9 +24,11 @@ const Header = () => {
                 <div className="flex items-center justify-around h-16">
                     {/* Logo/Name */}
                     <div className="flex-shrink-0">
-                        <a href="#" className="text-2xl font-bold text-green-500">
+                        <Link href={"/"}>
+                        <p className="text-2xl font-bold text-green-500">
                             Logo.
-                        </a>
+                        </p>
+                        </Link>
                     </div>
 
                     {/* Desktop Menu */}
@@ -41,7 +47,7 @@ const Header = () => {
                     </div>
 
                     {/* Search */}
-                    <div className="pt-4 pb-3 border-t border-gray-700">
+                    {/*<div className="pt-4 pb-3 border-t border-gray-700">
                         <div className="px-4 flex items-center">
                             <div className="relative w-96">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -57,10 +63,11 @@ const Header = () => {
                             </div>
                         </div>
                     </div>
+                    */}
 
                     {/* Desktop Menu */}
                     <div className='hover:text-green-500 cursor-pointer'>
-                        <ShoppingCart />
+                        <ShopCart />
                     </div>
                 </div>
             </div>
