@@ -1,5 +1,7 @@
 "use client"
+import { stringify } from "querystring";
 import { createContext, useContext, useEffect, useState } from "react";
+import { v4 as uuidv4 } from 'uuid';
 
 // Definition du type pour un produit
 interface Product {
@@ -9,11 +11,16 @@ interface Product {
   price: string;
 }
 
+interface CartElment {
+  product: Product;
+  key: string;
+}
+
 // Definition du type du contexte
 interface CartContextType {
-  cart: Product[];
+  cart: CartElment[];
   addToCart: (product: Product) => void;
-  removeFromCart: (title: string) => void;
+  removeFromCart: (key: string) => void;
 }
 
 // Creation du contexte avec une valeur par defaut
@@ -25,7 +32,7 @@ const CartContext = createContext<CartContextType>({
 
 // Provider du panier
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [cart, setCart] = useState<Product[]>(() => {
+  const [cart, setCart] = useState<CartElment[]>(() => {
     // Charger le panier depuis localStorage s'il existe
     if (typeof window !== "undefined") {
       const savedCart = localStorage.getItem("cart");
@@ -41,12 +48,16 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   // Ajouter un produit au panier
   const addToCart = (product: Product) => {
-    setCart((prevCart) => [...prevCart, product]);
+    let cartElement: CartElment = {
+      product: product,
+      key: uuidv4()
+    }
+    setCart((prevCart) => [...prevCart, cartElement]);
   };
 
   // Supprimer un produit du panier par son titre
-  const removeFromCart = (title: string) => {
-    setCart((prevCart) => prevCart.filter((item) => item.title !== title));
+  const removeFromCart = (key: string) => {
+    setCart((prevCart) => prevCart.filter((item) => item.key !== key));
   };
 
   return (

@@ -8,12 +8,12 @@ import { useCart } from '../context/CartContext'
 
 
 
-const Man = () => {
+const Man: any = () => {
   const products = [
-    { src: "/man1.webp", title: "Red T-Shirt", description: "A vibrant red t-shirt perfect for casual wear.", price: "250" },
-    { src: "/man2.webp", title: "Blue Jeans", description: "Comfortable blue jeans that go with anything.", price: "450" },
-    { src: "/man3.webp", title: "Black Hoodie", description: "A cozy black hoodie for the cold weather.", price: "350" },
-    { src: "/man4.webp", title: "Leather Jacket", description: "A stylish leather jacket for a chic look.", price: "750" },
+    { src: "/man1.webp", title: "Red T-Shirt", description: "A vibrant red t-shirt perfect for casual wear.", price: "250"  },
+    { src: "/man2.webp", title: "Blue Jeans", description: "Comfortable blue jeans that go with anything.", price: "450"  },
+    { src: "/man3.webp", title: "Black Hoodie", description: "A cozy black hoodie for the cold weather.", price: "350"  },
+    { src: "/man4.webp", title: "Leather Jacket", description: "A stylish leather jacket for a chic look.", price: "750"  },
     { src: "/man5.webp", title: "White Sneakers", description: "Simple yet trendy white white sneakers.", price: "400" },
     { src: "/man6.webp", title: "Gray Sweatpants", description: "Comfy gray sweatpants for lounging or workout.", price: "200" },
     { src: "/man7.webp", title: "Graphic T-Shirt", description: "A graphic t-shirt with a very cool design.", price: "300" },
