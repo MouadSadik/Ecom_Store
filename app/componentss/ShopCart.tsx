@@ -46,12 +46,12 @@ const ShopCart = () => {
           ) : (
             cart.map((item, index) => (
               <div key={index} className="flex items-center justify-between p-2 border-b">
-                <img src={item.src} alt={item.title} className="w-12 h-12 rounded-md object-cover" />
+                <img src={item.product.src} alt={item.product.title} className="w-12 h-12 rounded-md object-cover" />
                 <div className="flex-1 ml-2">
-                  <p className="font-medium">{item.title}</p>
-                  <p className="text-sm text-gray-600">{item.price} MAD</p>
+                  <p className="font-medium">{item.product.title}</p>
+                  <p className="text-sm text-gray-600">{item.product.price} MAD</p>
                 </div>
-                <button onClick={() => removeFromCart(item.title)} className="text-red-500">
+                <button onClick={() => removeFromCart(item.key)} className="text-red-500">
                   <Trash size={18} />
                 </button>
               </div>
